@@ -789,9 +789,9 @@ check_profile(AVCodecContext *const avctx, V4L2m2mContext *const s)
     struct v4l2_querymenu query_menu;
     uint32_t profile_id;
 
-    // An unset profile is almost certainly zero - do not reject
-    if (avctx->profile == 0) {
-        av_log(avctx, AV_LOG_VERBOSE, "Profile 0 - check skipped\n");
+    // An unset profile is almost certainly zero or -99 - do not reject
+    if (avctx->profile <= 0) {
+        av_log(avctx, AV_LOG_VERBOSE, "Profile <= 0 - check skipped\n");
         return 0;
     }
 
