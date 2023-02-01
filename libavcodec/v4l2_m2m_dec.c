@@ -1067,7 +1067,6 @@ static av_cold int v4l2_decode_init(AVCodecContext *avctx)
 
     parse_extradata(avctx);
 
-    av_log(avctx, AV_LOG_INFO, "level=%d\n", avctx->level);
     ret = ff_v4l2_m2m_create_context(priv, &s);
     if (ret < 0)
         return ret;
